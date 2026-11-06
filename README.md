@@ -12,12 +12,27 @@ Collects real-time thrust data via an HX711 load cell amplifier and exports resu
 
 ![](./src/cosm.o.s2_25_1765381584_3784617498713962645_78591862730_4.jpg)
 
-| Metric          | Value                    |
-| --------------- | ------------------------ |
-| Peak Thrust     | 19.75 kg (193.7 N)       |
-| Time to Peak    | 2.86 sec                 |
-| Total Burn Time | ~11.9 sec                |
+Output of `Plot_Thrust.py`. The script adds a 0.2545 kg (about 2.5 N) auto-calibration offset to every force sample before it finds the peak and integrates the impulse.
+
+| Metric          | Value                  |
+| --------------- | ---------------------- |
+| Peak Thrust     | 19.75 kg (193.7 N)     |
+| Time to Peak    | 2.86 sec               |
+| Recording Time  | ~11.9 sec              |
 | Total Impulse   | 28.55 kg·s (280.1 N·s) |
+
+An earlier version of this table listed ~11.9 sec as the burn time. The test report gives a burn time of 3.685 sec.
+
+### Test report values (without the offset)
+
+| Metric            | Value        |
+| ----------------- | ------------ |
+| Peak Thrust       | about 190 N  |
+| Burn Time         | 3.685 sec    |
+| Average Thrust    | 73.4 N       |
+| Total Impulse     | 270.6 N·s    |
+
+The two sets describe the same test. Removing the 2.5 N offset from the script output gives about 191 N peak and about 271 N·s, which matches the report. Whether the offset belongs in the calculation has not been settled, so treat the total impulse as roughly 270 to 280 N·s (about 3.5% apart) rather than as a precise value.
 
 ---
 
